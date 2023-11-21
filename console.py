@@ -73,7 +73,11 @@ class HBNBCommand(cmd.Cmd):
                 pline = pline[2].strip()  # pline is now str
                 if pline:
                     # check for *args or **kwargs
+<<<<<<< HEAD
                     if pline[0] == '{' and pline[-1] == '}'\
+=======
+                    if pline[0] is '{' and pline[-1] is'}'\
+>>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
                             and type(eval(pline)) is dict:
                         _args = pline
                     else:
@@ -115,6 +119,7 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
+<<<<<<< HEAD
         try:
             if not args:
                 raise SyntaxError()
@@ -133,6 +138,18 @@ class HBNBCommand(cmd.Cmd):
         new_instance = HBNBCommand.classes[arg_list[0]](**kw)
         new_instance.save()
         print(new_instance.id)
+=======
+        if not args:
+            print("** class name missing **")
+            return
+        elif args not in HBNBCommand.classes:
+            print("** class doesn't exist **")
+            return
+        new_instance = HBNBCommand.classes[args]()
+        storage.save()
+        print(new_instance.id)
+        storage.save()
+>>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
 
     def help_create(self):
         """ Help information for the create method """
@@ -214,11 +231,21 @@ class HBNBCommand(cmd.Cmd):
             if args not in HBNBCommand.classes:
                 print("** class doesn't exist **")
                 return
+<<<<<<< HEAD
             for k, v in storage.all(HBNBCommand.classes[args]).items():
                 print_list.append(str(v))
         else:
             for k, v in storage.all().items():
                 print_list.append(str(v))
+=======
+            for k, v in storage._FileStorage__objects.items():
+                if k.split('.')[0] == args:
+                    print_list.append(str(v))
+        else:
+            for k, v in storage._FileStorage__objects.items():
+                print_list.append(str(v))
+
+>>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
         print(print_list)
 
     def help_all(self):
@@ -278,7 +305,11 @@ class HBNBCommand(cmd.Cmd):
                 args.append(v)
         else:  # isolate args
             args = args[2]
+<<<<<<< HEAD
             if args and args[0] == '\"':  # check for quoted arg
+=======
+            if args and args[0] is '\"':  # check for quoted arg
+>>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
                 second_quote = args.find('\"', 1)
                 att_name = args[1:second_quote]
                 args = args[second_quote + 1:]
@@ -286,10 +317,17 @@ class HBNBCommand(cmd.Cmd):
             args = args.partition(' ')
 
             # if att_name was not quoted arg
+<<<<<<< HEAD
             if not att_name and args[0] != ' ':
                 att_name = args[0]
             # check for quoted val arg
             if args[2] and args[2][0] == '\"':
+=======
+            if not att_name and args[0] is not ' ':
+                att_name = args[0]
+            # check for quoted val arg
+            if args[2] and args[2][0] is '\"':
+>>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
                 att_val = args[2][1:args[2].find('\"', 1)]
 
             # if att_val was not quoted arg
