@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
 """This is the amenity class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy.orm import relationship
@@ -15,11 +14,3 @@ class Amenity(BaseModel, Base):
     __tablename__ = "amenities"
     name = Column(String(128), nullable=False)
     place_amenities = relationship("Place", secondary=place_amenity)
-=======
-""" State Module for HBNB project """
-from models.base_model import BaseModel
-
-
-class Amenity(BaseModel):
-    name = ""
->>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043

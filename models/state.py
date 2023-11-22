@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-<<<<<<< HEAD
 """This is the state class"""
 from sqlalchemy.ext.declarative import declarative_base
 from models.base_model import BaseModel, Base
@@ -34,12 +33,3 @@ class State(BaseModel, Base):
             if (elem.state_id == self.id):
                 result.append(elem)
         return (result)
-=======
-""" State Module for HBNB project """
-from models.base_model import BaseModel
-
-
-class State(BaseModel):
-    """ State class """
-    name = ""
->>>>>>> cbaedfdd56b6e339a0af634cae7c81972e647043
